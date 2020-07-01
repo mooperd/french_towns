@@ -35,6 +35,34 @@ def hundred_two_hundred(search_term):
             return_list.append(row)
     return jsonify(return_list)
 
+
+@app.route('/200-to-499-employees/<search_term>')
+def two_hundred_four_hundred(search_term):
+    return_list = []
+    for row in data:
+        if int(row["E14TS200"]) > int(search_term):
+            return_list.append(row)
+    return jsonify(return_list)
+
+
+@app.route('/more-than-500-employees/<search_term>')
+def five_hundred(search_term):
+    return_list = []
+    for row in data:
+        if int(row["E14TS500"]) > int(search_term):
+            return_list.append(row)
+    return jsonify(return_list)
+
+
+@app.route('/total-number-firms/<search_term>')
+def total_firms(search_term):
+    return_list = []
+    for row in data:
+        if int(row["E14TST"]) > int(search_term):
+            return_list.append(row)
+    return jsonify(return_list)
+
+
 if __name__ == '__main__':
     data = import_data('short.csv')
     app.run(debug=True)
